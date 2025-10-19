@@ -43,12 +43,19 @@ pub fn main() void {
     //
     // We'll convert this weight from pounds to metric units at a
     // conversion of 0.453592 kg to the pound.
-    const shuttle_weight: f16 = 0.453592 * 4480e3;
+    const shuttle_weight: f32 = 0.453592 * 4480e3;
 
     // By default, float values are formatted in scientific
     // notation. Try experimenting with '{d}' and '{d:.3}' to see
     // how decimal formatting works.
-    print("Shuttle liftoff weight: {d:.0} metric tons\n", .{shuttle_weight});
+
+    // error: 
+    // ========= expected this output: ==========
+    // Shuttle liftoff weight: 2032 metric tons
+    // ========= but found: =====================
+    // Shuttle liftoff weight: 2032.0922 metric tons
+    // ==========================================
+    print("Shuttle liftoff weight: {d:.0} metric tons\n", .{shuttle_weight / 1_000});
 }
 
 // Floating further:
